@@ -15,7 +15,7 @@ npm start
 
 # Helpful Links
 > https://www.youtube.com/watch?v=_XM9ziOzWk4
-> How to set up your Google OAuth, you need to add to Supabase
+How to set up your Google OAuth, you need to add to Supabase
 
 > https://supabase.com/
-> Supabase Home
+Supabase Home

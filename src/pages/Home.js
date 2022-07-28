@@ -5,7 +5,10 @@ import axios from 'axios';
 
 export default function Home() {
   const [get, setGet] = useState(true)
-  const [users, setUsers] = useState()
+  const [ssaqs, setSsaqs] = useState()
+  const [tube, setTube] = useState()
+  const [ratings, setRatings] = useState()
+  const [aa, setAa] = useState()
   const history = useHistory();
 
   useEffect(() => {
@@ -15,18 +18,19 @@ export default function Home() {
   }, [history]);
 
   useEffect(() => {
-    async function makeGetRequest() {
+    async function getData() {
+      const ssaqsD = await axios.get('http://3.141.1.3:8888/ssaqs');
+      const tubeD = await axios.get('http://3.141.1.3:8888/tube');
+      const ratingsD = await axios.get('http://3.141.1.3:8888/ratings');
+      const aaD = await axios.get('http://3.141.1.3:8888/a_a');
 
-      let res = await axios.get('http://18.222.162.221:3000/todos');
-
-      let data = res.data;
-      setUsers(data)
-      console.log(data);
+      setSsaqs(ssaqsD.data)
+      setTube(tubeD.data)
+      setRatings(ratingsD.data)
+      setAa(aaD.data)
     }
-
-
     if (get) {
-      makeGetRequest();
+      getData();
       setGet(false)
     }
   }, [get]);
@@ -37,7 +41,8 @@ export default function Home() {
         <div className="col-xs-12 col-lg-8">
           <div className="card-title text-center mb-3">
             <h4>Home Page</h4>
-            <p>Yo</p>
+            <p>Hello Moto</p>
+            {ratings && <p>{ratings[1].score}</p>}
           </div>
         </div>
       </div>
